@@ -60,34 +60,36 @@
 \setlength{\paperwidth}{90cm}
 \setlength{\paperheight}{100cm}
 \renewcommand{\setpspagesize}{
-\ifthenelse{\equal{\orientation}{portrait}}{
-\special{papersize=90cm,100cm}
-}{\special{papersize=90cm,100cm}
-}
+  \ifthenelse{\equal{\orientation}{portrait}}{
+    \special{papersize=90cm,100cm}
+    }{\special{papersize=90cm,100cm}
+  }
 }
 \setlength{\topmargin}{0in}
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
 \setlength{\textheight}{84cm}
-\setlength{\textwidth}{75.5cm}
+\setlength{\textwidth}{75.5cm}%{80cm}
 \setlength{\oddsidemargin}{2.4cm}
 \setlength{\evensidemargin}{0cm}
-\setlength{\parindent}{0.25in}
+\setlength{\parindent}{0in}%{0.25in}
 \setlength{\parskip}{0.25in}
 \setlength{\pdfpagewidth}{90cm}
 \setlength{\pdfpageheight}{100cm}
 \newcommand\BackgroundPic{
-\put(-82,65){
-\parbox[b][\paperheight]{\paperwidth}{%
-\vfill
-\centering
-\includegraphics[width=\paperwidth,height=\paperheight,
-keepaspectratio]{poster-sic.jpg}%
-\vfill
-}}}
+  \put(-82,65){
+    \parbox[b][\paperheight]{\paperwidth}{%
+      \vfill
+      \centering
+      \includegraphics[width=\paperwidth,height=\paperheight,
+      keepaspectratio]{poster-sic.jpg}%
+      \vfill
+    }
+  }
+}
 \setlength{\columnseprule}{0pt}
 
-\renewcommand{\titlesize}{\fontsize{84}{45}\selectfont }
+\renewcommand{\titlesize}{\fontsize{84}{35}\selectfont }
 \newcommand{\largo}{\fontsize{36}{40}\selectfont }
 \makeatletter
 % La commande \section est définie comme suit
@@ -103,13 +105,21 @@ keepaspectratio]{poster-sic.jpg}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Título   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-\title{\vspace{-0.2cm} \hspace{-15cm}\textcolor{amarelo}{\parbox{0.9\textwidth}{DIGITE O TÍTULO AQUI }}}
+\title{
+  \vspace{-3cm} 
+  \hspace{-27cm}
+  \textcolor{amarelo}{
+    \parbox{0.9\textwidth}{
+      \textsc{Um sistema para auxiliar na\\ 
+        aprendizagem da disciplina\\ 
+        Linguagens Formais e Autômatos
+      }
+    }
+  }
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 
 \begin{document}
@@ -118,78 +128,72 @@ keepaspectratio]{poster-sic.jpg}%
 \AddToShipoutPicture{\BackgroundPic}
 \makeatletter
 \AddToShipoutPicture{%
-            \setlength{\@tempdimb}{.5\paperwidth}%
-            \setlength{\@tempdimc}{.5\paperheight}%
-            \setlength{\unitlength}{1pt}%
-            \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
-                    }%
+  \setlength{\@tempdimb}{.5\paperwidth}%
+  \setlength{\@tempdimc}{.5\paperheight}%
+  \setlength{\unitlength}{1pt}%
+  \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+  }%
 }
 \makeatother
 \maketitle
-\mbox{}\vspace{6cm}
+%\mbox{}\vspace{6cm}
 
 \begin{center}
-\textbf{ \large Autor }\\
+\textbf{ \large Rafael Cardoso da Silva }\\
 Centro de Matemática, Computação e Cognição, Universidade Federal do ABC\\
 Av. dos Estados, 5001, Santo André, SP\\
-\{pessoa1, pessoa2\}@ufabc.edu.br
+rafael.cardoso@aluno.ufabc.edu.br
 \end{center}
 
 \vspace{1.2cm}
 \begin{multicols}{2}
+  
 \paragraph{Resumo:}
+  Resolver exercícios é fundamental para um aluno fixar os conceitos apresentados em aula. Por outro lado, ter seus exercícios corrigidos também é muito importante, para que ele possa avaliar o seu aprendizado. Na UFABC, a disciplina de Linguagens Formais e Autômatos contempla vários exercícios que admitem infinitas respostas, o que torna a correção deles praticamente impossível, principalmente quando as turmas são grandes. O objetivo deste projeto foi a criação e implementação de um sistema para aplicação e correção automática de exercícios envolvendo autômatos finitos determinísticos. Através do estudo de métodos e algoritmos presentes na literatura, foi possível implementar o teste de equivalência entre o autômato-resposta do aluno e o autômato-gabarito previamente armazenado no banco de dados. Ao final do projeto, o sistema foi usado em caráter experimental numa turma da UFABC da disciplina de Linguagens Formais e Autômatos, afim de testar a sua qualidade. E ao final da disciplina, a nota que os alunos obtiverem ao revolver os exercícios do sistema ajudarão a compor o conceito final de cada um na disciplina.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rutrum ullamcorper sapien, nec ultrices felis convallis et. Suspendisse potenti. Mauris dictum felis eros. Vestibulum eros quam, vehicula sit amet placerat sed, luctus ut augue. Praesent rutrum erat blandit arcu consectetur fermentum. Proin non mauris orci. Aliquam et dapibus neque. Proin felis nisi, tempor at ullamcorper eget, elementum eu tortor. Sed non quam in arcu imperdiet porttitor a placerat orci. In vitae arcu nunc, ornare lobortis magna. Aliquam iaculis lorem sit amet libero mollis quis gravida dolor volutpat. Suspendisse et odio in lectus ornare accumsan. Nulla mi urna, accumsan lobortis rhoncus id, molestie ut sapien. Integer elit leo, faucibus vestibulum fringilla id, interdum ut quam. Mauris sollicitudin molestie sem, in egestas velit iaculis nec. Suspendisse bibendum sem vel justo sollicitudin consequat euismod nunc suscipit.
+  \noindent \textbf{Palavras-chave:} autômato finito, equivalência de autômatos, minimização de autômato, programação para web.
 
- \section{Introdução}
+\section{Introdução}
 
-Integer sapien sapien, sodales non sollicitudin sed, vestibulum volutpat odio. In sit amet interdum lectus.
-Nulla venenatis, enim eu viverra posuere, orci justo auctor nulla, sed pellentesque nisl est sed mi.
-Vivamus neque nisi, dignissim quis tincidunt et, tincidunt id est. Integer magna tortor, consequat et viverra eget,
-condimentum et arcu. Fusce id odio non ipsum tempus blandit. Proin rhoncus dui ut turpis volutpat tempor tempus sapien varius. 
-Proin rhoncus, massa a interdum vulputate, augue quam vehicula ante, ut luctus turpis lorem a nunc.
-Mauris ac lorem enim, a vehicula arcu. Maecenas eu nunc urna, sit amet pretium neque.
-Cras molestie lorem sed risus lacinia eu tempor nisi ultricies.
-Pellentesque felis lorem, tristique ut vehicula sit amet, ultricies a ipsum.
-Integer sapien sapien, sodales non sollicitudin sed, vestibulum volutpat odio. In sit amet interdum lectus.
-Nulla venenatis, enim eu viverra posuere, orci justo auctor nulla, sed pellentesque nisl est sed mi.
-Vivamus neque nisi, dignissim quis tincidunt et, tincidunt id est. Integer magna tortor, consequat et viverra eget,
-condimentum et arcu. Fusce id odio non ipsum tempus blandit. Proin rhoncus dui ut turpis volutpat tempor tempus sapien varius. 
-Proin rhoncus, massa a interdum vulputate, augue quam vehicula ante, ut luctus turpis lorem a nunc.
-Mauris ac lorem enim, a vehicula arcu. Maecenas eu nunc urna, sit amet pretium neque.
-Cras molestie lorem sed risus lacinia eu tempor nisi ultricies.
-Pellentesque felis lorem, tristique ut vehicula sit amet, ultricies a ipsum.
-\section{Segunda Secção}
+  
 
 
+\section{Metodologia}
+- Moore
 
+- HKE
 
-
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam rutrum ullamcorper sapien, nec ultrices felis convallis et. Suspendisse potenti. Mauris dictum felis eros. Vestibulum eros quam, vehicula sit amet placerat sed, luctus ut augue. Praesent rutrum erat blandit arcu consectetur fermentum. Proin non mauris orci. Aliquam et dapibus neque. Proin felis nisi, tempor at ullamcorper eget, elementum eu tortor. Sed non quam in arcu imperdiet porttitor a placerat orci. In vitae arcu nunc, ornare lobortis magna. Aliquam iaculis lorem sit amet libero mollis quis gravida dolor volutpat. Suspendisse et odio in lectus ornare accumsan.
-
-Integer sapien sapien, sodales non sollicitudin sed, vestibulum volutpat odio. In sit amet interdum lectus.
-Nulla venenatis, enim eu viverra posuere, orci justo auctor nulla, sed pellentesque nisl est sed mi.
-
+- DFAjudge
 
 
 
 \section{Conclusão}
-Suspendisse eleifend ullamcorper dignissim. Quisque ut tortor non massa fringilla vehicula. 
-Aenean ac metus orci, ut tincidunt leo. In ullamcorper ultricies lorem, nec rhoncus lorem sodales quis.
-In pulvinar ornare imperdiet. Maecenas a venenatis eros. Curabitur ac metus at dolor blandit tempor.
-Vestibulum sit amet est sit amet risus blandit placerat. Suspendisse ullamcorper eros nec dui cursus vestibulum. 
 
+
+
+\section{Referências}
+// apenas citada neste poster
+
+As referências devem ser feitas respeitando-se as normas definidas pela ABNT. Somente deverão ser apresentadas as referências citadas no referido pôster.
+
+Nas referências no texto citar o nome do autor e o ano da publicação (SANTOS, 2003).
+
+SANTOS, Bruno A. Aspectos conceituais e arquiteturais para a criação de linhagens de agentes de software cognitivos e situados. 2003. 130f. Dissertação (Mestrado em Tecnologia – Manufatura Integrada por Computador) – Centro Federal de Educação Tecnológica de Minas Gerais, Belo Horizonte, 2003.
+
+
+HOPCROFT, J. An $n~log~n$ algorithm for minimizing states in a finite automaton. In:
+\textit{Theory of machines and computations (Proc. Internat. Sympos., Technion, Haifa, 1971).} [S.l.]: Academic Press, New York, 1971. p. 189–196.
+
+HOPCROFT, J.; KARP, R. A Linear Algorithm for Testing Equivalence of Finite Automata. [S.l.], 1971.
+
+HOPCROFT, J. E.; KARP, R. M. 
+A Linear Algorithm for Testing Equivalence of Finite Automata.
+A linear time algorithm for testing equivalence of finite automata. 
+\textit{Technical report of Cornell University}, p. 71–114, 1971.
 
 %%%%%Deve conter agradecimento agência de fomento
-
 \vspace{1cm}
- \textbf{Este trabalho foi financiado pelo CNPq. }
-
-
-
-
-
-
+\noindent\textbf{Este trabalho foi financiado pelo Programa de Iniciação Científica da UFABC. }
 
 \end{multicols}
 \end{document}

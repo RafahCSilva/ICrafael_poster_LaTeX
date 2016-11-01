@@ -1,4 +1,4 @@
-\documentclass[plainsections,  36pt]{sciposter}
+\documentclass[plainsections,  24pt]{sciposter} % 36pt no ppt eh 24pt
 \usepackage[english]{babel}
 \usepackage{xcolor,eso-pic,graphicx,wallpaper}
 \usepackage{fix-cm} % Huge
@@ -69,8 +69,8 @@
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
 \setlength{\textheight}{84cm}
-\setlength{\textwidth}{75.5cm}%{80cm}
-\setlength{\oddsidemargin}{2.4cm}
+\setlength{\textwidth}{80cm}%{75.5cm}
+\setlength{\oddsidemargin}{0cm}%{2.4cm}
 \setlength{\evensidemargin}{0cm}
 \setlength{\parindent}{0in}%{0.25in}
 \setlength{\parskip}{0.25in}
@@ -90,7 +90,7 @@
 \setlength{\columnseprule}{0pt}
 
 \renewcommand{\titlesize}{\fontsize{84}{35}\selectfont }
-\newcommand{\largo}{\fontsize{36}{40}\selectfont }
+\newcommand{\largo}{\fontsize{36}{40}\selectfont } %{36}{40}
 \makeatletter
 % La commande \section est définie comme suit
 \renewcommand\section{\@startsection {section}{1}{\z@}%
@@ -104,10 +104,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Título   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%   Título   %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{
   \vspace{-3cm} 
-  \hspace{-27cm}
+  \hspace{-25cm}
   \textcolor{amarelo}{
     \parbox{0.9\textwidth}{
       \textsc{Um sistema para auxiliar na\\ 
@@ -119,7 +119,7 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \begin{document}
@@ -139,10 +139,10 @@
 %\mbox{}\vspace{6cm}
 
 \begin{center}
-\textbf{ \large Rafael Cardoso da Silva }\\
+\textbf{ \large Rafael Cardoso da Silva, Daniel Martin Morgato}\\
 Centro de Matemática, Computação e Cognição, Universidade Federal do ABC\\
 Av. dos Estados, 5001, Santo André, SP\\
-rafael.cardoso@aluno.ufabc.edu.br
+\textit{rafael.cardoso@aluno.ufabc.edu.br, daniel.martin@ufabc.edu.br}
 \end{center}
 
 \vspace{1.2cm}
@@ -153,47 +153,85 @@ rafael.cardoso@aluno.ufabc.edu.br
 
   \noindent \textbf{Palavras-chave:} autômato finito, equivalência de autômatos, minimização de autômato, programação para web.
 
-\section{Introdução}
+\section{\textsc{Introdução}}
 
+Na disciplina MC3106 – Linguagens Formais e Autômatos – vários exercícios da parte inicial da disciplina pedem como resposta um autômato finito determinístico. Tais exercícios são particularmente trabalhosos de se corrigir porque cada um deles admite infinitas respostas corretas e, por esse motivo, sua correção se torna exaustiva para o monitor ou docente responsável.
+
+Com o intuito de agilizar essa tarefa, este projeto propõe o desenvolvimento de um sistema web que permita ao aluno inserir seu autômato-resposta por meio de uma interface intuitiva e fácil de ser utilizada e obter um \textit{feedback} quase que imediatamente, um tempo drasticamente reduzido se comparado à correção manual. 
+
+Um \textit{autômato finito determinístico} (também chamado de AFD ou máquina de estados) consiste de um conjunto de estados não vazio $Q$, um alfabeto $\Sigma$, um estado inicial $s \in Q$, um conjunto de estados de aceitação $F \subseteq Q$ e uma função de transição $\delta \colon Q \times \Sigma \rightarrow Q$. É comum estender a função de transição para uma função $\hat{\delta} \colon Q \times \Sigma^* \rightarrow Q$ definida indutivamente por
+
+\begin{itemize}%[(i)]
+  \item[(i)] $\hat{\delta}(q, \varepsilon) = q$ para todo estado $q \in Q$;
+  \item[(ii)] $\hat{\delta}(q, \sigma) = \delta(q, \sigma)$ para todo estado $q \in Q$ e símbolo $\sigma \in \Sigma$;
+  \item[(iii)] $\hat{\delta}(q, \sigma_1 \cdots \sigma_k) = \delta(\hat{\delta}(q, \sigma_1 \cdots \sigma_{k-1}), \sigma_k)$ para todo estado $q \in Q$ e símbolos $\sigma_1, \dots, \sigma_k \in \Sigma$.
+\end{itemize}
+
+Abaixo vemos dois exemplos de AFDs que reconhecer a seguinte linguagem:
+$$L() = \{w \in \Sigma^* :  w \text{ tem número par de símbolos } \mathtt{a}\}$$
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.75\linewidth]{exemplo.png}
+  \caption{Autômato $M_1$ a esquerda e Autômato $M_2$ a direita.}
+  \label{fig:exemplo}
+\end{figure}
+
+Apesar de $M_2$ ser visivelmente maior e mais complexo que $M_1$, o autômato $M_2$ reconhece a mesma linguagem que o autômato $M_1$ da Figura~\ref{fig:exemplo}. É possível demonstrar que, para cada linguagem regular, existem infinitos autômatos que a reconhecem. Como decidir então se o autômato-resposta dado por um aluno reconhece a linguagem pedida? No caso do sistema que iremos desenvolver isso se reduz ao seguinte problema:
   
+\noindent\textbf{Problema:} Decidir se dois autômatos finitos determinísticos reconhecem a mesma linguagem.
+
+\section{\textsc{Objetivos e Metodologia}}
+
+Estudar e implementar o algoritmo de Moore (MOORE, 1956) para minimização e equivalência de AFDs.
+
+Estudar e implementar o algoritmo de Hopcroft e Karp (HOPCROFT; KARP, 1971) para testar a equivalência de AFDs; 
+
+Desenvolvimento do sistema de apoio a aprendizagem da disciplina Linguagens Formais e Autômatos
+
+Reuniões semanais com o orientador, afim de acompanhar o progresso do desenvolvimento do sistema e esclarecer eventuais dúvidas.
 
 
-\section{Metodologia}
-- Moore
-
-- HKE
-
-- DFAjudge
+\section{\textsc{Resultados}}
 
 
-
-\section{Conclusão}
-
-
-
-\section{Referências}
-// apenas citada neste poster
-
-As referências devem ser feitas respeitando-se as normas definidas pela ABNT. Somente deverão ser apresentadas as referências citadas no referido pôster.
-
-Nas referências no texto citar o nome do autor e o ano da publicação (SANTOS, 2003).
-
-SANTOS, Bruno A. Aspectos conceituais e arquiteturais para a criação de linhagens de agentes de software cognitivos e situados. 2003. 130f. Dissertação (Mestrado em Tecnologia – Manufatura Integrada por Computador) – Centro Federal de Educação Tecnológica de Minas Gerais, Belo Horizonte, 2003.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\linewidth]{diagDER.png}
+  \caption{Diagrama de Entidade e Relacionamento do DFAjudge}
+  \label{fig:DER}
+\end{figure}
 
 
-HOPCROFT, J. An $n~log~n$ algorithm for minimizing states in a finite automaton. In:
-\textit{Theory of machines and computations (Proc. Internat. Sympos., Technion, Haifa, 1971).} [S.l.]: Academic Press, New York, 1971. p. 189–196.
+\textit{Tipos de Feedback}
 
-HOPCROFT, J.; KARP, R. A Linear Algorithm for Testing Equivalence of Finite Automata. [S.l.], 1971.
+Teste com a Turma de LFA 2016q2
 
-HOPCROFT, J. E.; KARP, R. M. 
-A Linear Algorithm for Testing Equivalence of Finite Automata.
-A linear time algorithm for testing equivalence of finite automata. 
-\textit{Technical report of Cornell University}, p. 71–114, 1971.
 
+\section{\textsc{Discussão}}
+
+
+
+\section{\textsc{Conclusão}}
+
+
+
+
+\section{\textsc{Referências}}
+%// apenas citados neste poster
+
+HOPCROFT, J. E.; MOTWANI, R.; ULLMAN, J. D. \textit{Automata theory, languages, and computation}. International Edition, v. 24, 2006.
+
+MOORE, Edward F. \textit{Gedanken-experiments on sequential machines}. Automata studies, v. 34, p. 129-153, 1956.
+
+HOPCROFT, John E.; KARP, Richard M. \textit{A Linear Algorithm for Testing Equivalence of Finite Automata}. Technical report of Cornell University, p. 71–114, 1971.
+
+\section{\textsc{Agradecimentos}}
+Este trabalho foi financiado pelo Programa de Iniciação Científica da UFABC.
 %%%%%Deve conter agradecimento agência de fomento
-\vspace{1cm}
-\noindent\textbf{Este trabalho foi financiado pelo Programa de Iniciação Científica da UFABC. }
+%\vspace{1cm}
+%\noindent\textbf{Este trabalho foi financiado pelo Programa de Iniciação Científica da UFABC. }
+
 
 \end{multicols}
 \end{document}

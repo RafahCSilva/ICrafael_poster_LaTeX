@@ -11,6 +11,12 @@
 
 \usepackage[algo2e, portuguese, linesnumbered, ruled, lined, vlined, tworuled ]{algorithm2e}
 
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
 %\renewcommand{\sfdefault}{verdana}
 %\usepackage{verbatim}
 \usepackage{graphicx}%
@@ -144,10 +150,13 @@
 %\mbox{}\vspace{6cm}
 
 \begin{center}
-\textbf{ \large Rafael Cardoso da Silva, Daniel Morgato Martin}\\
-Centro de Matemática, Computação e Cognição, Universidade Federal do ABC\\
-Av. dos Estados, 5001, Santo André, SP\\
-\textit{rafael.cardoso@aluno.ufabc.edu.br, daniel.martin@ufabc.edu.br}
+\textbf{\LARGE 
+  Rafael Cardoso da Silva, Daniel Morgato Martin }\\
+{\large
+  Centro de Matemática, Computação e Cognição, Universidade Federal do ABC\\
+  Av. dos Estados, 5001, Santo André, SP\\
+  \textit{rafael.cardoso@aluno.ufabc.edu.br, daniel.martin@ufabc.edu.br}
+}
 \end{center}
 
 \vspace{1.2cm}
@@ -248,9 +257,9 @@ No caso do sistema que iremos desenvolver isso se reduz ao seguinte problema:
   \caption{Diagrama de Entidade e Relacionamento do DFAjudge}
   \label{fig:DER}
 \end{figure}
+\vspace{-1cm}
 
-
-\section{\textsc{Tipos de \textit{Feedback}}}
+\section{\textsc{Tipos de Feedback}}
 \begin{itemize}
   \item Correto;
   \item Incorreto, e uma palavra que os distinguiram;
@@ -277,28 +286,33 @@ No caso do sistema que iremos desenvolver isso se reduz ao seguinte problema:
 
 
 
-\section{\textsc{Teste com a turma de 2016q2}}
-
-\begin{table}[H]
-  \centering
-  \caption{Coeficiente de correlação entre a nota obtida no sistema e nas provas.}
-  \begin{tabular}{r|r} %\hline 
-%    & Correlação \\ \hline 
-%    Porcentagem de uso do sistema e P1 & 0,443637036 \\ %\hline 
-%    Porcentagem de uso do sistema e P2 & 0,487210236 \\ %\hline 
-%    Porcentagem de uso do sistema e MP & 0,575053945 \\ %\hline 
-                      & Correlação \\ \hline 
-    Prova 1           & ~0,443637036 \\ %\hline 
-    Prova 2           & ~0,487210236 \\ %\hline 
-    Média das Provas  & ~0,575053945 \\ %\hline 
-  \end{tabular} 
-%  \vspace{-2cm}
-\end{table}
-
-
-%\section{\textsc{Conclusão}}
+%\section{\textsc{Teste com a turma de 2016q2}}
+%
+%\begin{table}[H]
+%  \centering
+%  \caption{Coeficiente de correlação entre a nota obtida no sistema e nas provas.}
+%  \begin{tabular}{r|r} %\hline 
+%%    & Correlação \\ \hline 
+%%    Porcentagem de uso do sistema e P1 & 0,443637036 \\ %\hline 
+%%    Porcentagem de uso do sistema e P2 & 0,487210236 \\ %\hline 
+%%    Porcentagem de uso do sistema e MP & 0,575053945 \\ %\hline 
+%                      & Correlação \\ \hline 
+%    Prova 1           & ~0,443637036 \\ %\hline 
+%    Prova 2           & ~0,487210236 \\ %\hline 
+%    Média das Provas  & ~0,575053945 \\ %\hline 
+%  \end{tabular} 
+%%  \vspace{-2cm}
+%\end{table}
 
 
+\section{\textsc{Futuros Projetos}}
+
+\begin{itemize}
+  \item Cobrir outras classes de exercícios da disciplina de Linguagens Formais e Autômatos, e também de outras disciplinas, desde que admitem algoritmos corretores;
+  \item Aperfeiçoar o gerenciamento de Questões;
+  \item Aprimorar o DFAdesigner;
+  \item Ser aberto ao público.
+\end{itemize}
 
 
 \section{\textsc{Referências}}
@@ -312,7 +326,6 @@ HOPCROFT, John E.; KARP, Richard M. \textit{A Linear Algorithm for Testing Equiv
 
 \section{\textsc{Agradecimentos}}
 Este trabalho foi financiado pelo Programa de Iniciação Científica da UFABC.
-
 
 
 \end{multicols}
